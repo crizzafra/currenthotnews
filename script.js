@@ -1,10 +1,17 @@
 const API_KEY = 'pKb2IdqDLYylxrmqqZQcx8Hvf4nS6fdm8E2KfA7lgzVUsPoq'; // API key for authentication
-const API_URL = `https://api.currentsapi.services/v1/latest-news?apiKey=${API_KEY}`;
-
 const newsContainer = document.getElementById('news-container');
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
 
-// Fetch latest news from CurrentsAPI
-async function fetchNews() {
+// Fetch news from CurrentsAPI
+async function fetchNews(keyword = '') {
+  let API_URL = `https://api.currentsapi.services/v1/latest-news?apiKey=${API_KEY}`;
+
+  // If keyword is provided, modify the API URL for search
+  if (keyword) {
+    API_URL = `https://api.currentsapi.services/v1/search?apiKey=${API_KEY}&keywords=${encodeURIComponent(keyword)}`;
+  }
+
   try {
     const response = await fetch(API_URL);
     const data = await response.json();
@@ -20,9 +27,10 @@ async function fetchNews() {
   }
 }
 
-// Render news items on the page
+// Render news items in the container
 function renderNews(newsItems) {
-  newsContainer.innerHTML = ''; // Clear loading text
+  newsContainer.innerHTML = ''; // Clear previous news or loading text
+
   newsItems.forEach(news => {
     const newsElement = document.createElement('div');
     newsElement.classList.add('news-item');
@@ -37,5 +45,11 @@ function renderNews(newsItems) {
   });
 }
 
-// Fetch news on page load
+// Add event listener to the search button
+searchButton.addEventListener('click', () => {
+  const keyword = searchInput.value.trim();
+  fetchNews(keyword);
+});
+
+// Fetch latest news on page load
 fetchNews();
