@@ -1,16 +1,18 @@
-/* General reset and body styling */
+/* Reset some basic styles to avoid browser inconsistencies */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Body styling */
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
   color: #333;
 }
 
+/* Header section */
 header {
   background-color: #4CAF50;
   color: white;
@@ -18,9 +20,10 @@ header {
   text-align: center;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 100; /* Ensure the header stays on top */
 }
 
+/* Search bar container */
 .search-container {
   margin-top: 10px;
   display: flex;
@@ -28,6 +31,7 @@ header {
   gap: 10px;
 }
 
+/* Search input styling */
 .search-container input {
   padding: 10px;
   width: 300px;
@@ -36,6 +40,7 @@ header {
   outline: none;
 }
 
+/* Search button styling */
 .search-container button {
   padding: 10px;
   background-color: white;
@@ -46,15 +51,17 @@ header {
   color: #4CAF50;
 }
 
+/* Main container for news items */
 #news-container {
   max-width: 1200px;
   margin: 20px auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns */
+  grid-template-columns: repeat(2, 1fr); /* Two-column layout */
   gap: 20px; /* Space between items */
   padding: 20px;
 }
 
+/* Individual news item styling */
 .news-item {
   display: flex;
   flex-direction: column;
@@ -64,9 +71,10 @@ header {
   background-color: #fff;
   overflow: hidden;
   padding: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
+/* Image styling within news items */
 .news-item img {
   width: 100%;
   max-height: 200px;
@@ -75,30 +83,19 @@ header {
   margin-bottom: 15px;
 }
 
+/* Content section of each news item */
 .news-content {
   width: 100%;
   text-align: left;
 }
 
+/* News item title */
 .news-item h2 {
   font-size: 20px;
   margin-bottom: 10px;
 }
 
-.news-item a {
-  text-decoration: none;
-  color: #4CAF50;
-}
-
-.news-item p {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.news-item small {
-  color: #777;
-}
-
+/* Styling for the footer */
 footer {
   text-align: center;
   padding: 10px;
