@@ -27,7 +27,7 @@ async function fetchNews(keyword = '') {
   }
 }
 
-// Render news items in the container
+// Render news items with images
 function renderNews(newsItems) {
   newsContainer.innerHTML = ''; // Clear previous news or loading text
 
@@ -35,10 +35,16 @@ function renderNews(newsItems) {
     const newsElement = document.createElement('div');
     newsElement.classList.add('news-item');
 
+    // Check if an image URL is available; if not, use a placeholder
+    const imageUrl = news.image || 'https://via.placeholder.com/150';
+
     newsElement.innerHTML = `
-      <h2><a href="${news.url}" target="_blank">${news.title}</a></h2>
-      <p>${news.description}</p>
-      <small>Published on: ${new Date(news.published).toLocaleString()}</small>
+      <img src="${imageUrl}" alt="News Image" />
+      <div class="news-content">
+        <h2><a href="${news.url}" target="_blank">${news.title}</a></h2>
+        <p>${news.description || 'No description available.'}</p>
+        <small>Published on: ${new Date(news.published).toLocaleString()}</small>
+      </div>
     `;
 
     newsContainer.appendChild(newsElement);

@@ -56,11 +56,23 @@ header {
 }
 
 .news-item {
-  padding: 15px;
+  display: flex;
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  overflow: hidden;
   background-color: #f9f9f9;
+}
+
+.news-item img {
+  width: 150px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-content {
+  padding: 15px;
+  flex: 1;
 }
 
 .news-item h2 {
@@ -87,4 +99,3 @@ footer {
   width: 100%;
   bottom: 0;
 }
-  
