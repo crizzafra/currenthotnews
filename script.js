@@ -49,10 +49,18 @@ function renderNews(newsItems) {
   });
 }
 
-// Add search functionality
+// Add event listener to the search button
 searchButton.addEventListener('click', () => {
   const keyword = searchInput.value.trim();
   fetchNews(keyword);
+});
+
+// Add event listener for the Enter key in the search input
+searchInput.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    const keyword = searchInput.value.trim();
+    fetchNews(keyword);
+  }
 });
 
 // Load latest news on page load
