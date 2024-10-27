@@ -7,7 +7,6 @@ const searchButton = document.getElementById('search-button');
 async function fetchNews(keyword = '') {
   let API_URL = `https://api.currentsapi.services/v1/latest-news?apiKey=${API_KEY}`;
 
-  // If keyword is provided, modify the API URL for search
   if (keyword) {
     API_URL = `https://api.currentsapi.services/v1/search?apiKey=${API_KEY}&keywords=${encodeURIComponent(keyword)}`;
   }
@@ -27,16 +26,15 @@ async function fetchNews(keyword = '') {
   }
 }
 
-// Render news items with images
+// Render news items
 function renderNews(newsItems) {
-  newsContainer.innerHTML = ''; // Clear previous news or loading text
+  newsContainer.innerHTML = ''; // Clear previous content
 
   newsItems.forEach(news => {
     const newsElement = document.createElement('div');
     newsElement.classList.add('news-item');
 
-    // Check if an image URL is available; if not, use a placeholder
-    const imageUrl = news.image || 'https://via.placeholder.com/150';
+    const imageUrl = news.image || 'https://via.placeholder.com/800x300';
 
     newsElement.innerHTML = `
       <img src="${imageUrl}" alt="News Image" />
@@ -51,11 +49,11 @@ function renderNews(newsItems) {
   });
 }
 
-// Add event listener to the search button
+// Add search functionality
 searchButton.addEventListener('click', () => {
   const keyword = searchInput.value.trim();
   fetchNews(keyword);
 });
 
-// Fetch latest news on page load
+// Load latest news on page load
 fetchNews();
